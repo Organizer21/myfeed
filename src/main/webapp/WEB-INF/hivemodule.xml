@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<module id="rss" version="1.0.0" package="com.tapfans.myfeed.tapestry.services">
+
+	<contribution configuration-id="tapestry.url.ServiceEncoders">
+		<direct-service-encoder id="direct" stateless-extension="do" stateful-extension="sdo" />
+		<page-service-encoder id="page" extension="html" service="page" />
+		<page-service-encoder id="external" extension="shtml" service="external" />
+		<asset-encoder id="asset" path="/assets" />
+		<extension-encoder id="ext" extension="svc" after="*" />
+	</contribution>
+
+	<contribution configuration-id="tapestry.services.ApplicationServices">
+		<service name="dynaAsset" object="service:DynaAsset" />
+	</contribution>
+
+	<service-point id="DynaAsset" interface="org.apache.tapestry.engine.IEngineService">
+		<invoke-factory>
+			<construct class="DynaAssetService">
+				<set-object property="exceptionReporter" value="infrastructure:requestExceptionReporter" />
+				<set-object property="response" value="infrastructure:response" />
+				<set-object property="linkFactory" value="infrastructure:linkFactory" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+
+	<service-point id="ApplicationLifecycle">
+
+		Controls lifecycle operations; specifically logging out.
+
+		<invoke-factory model="threaded">
+			<construct class="ApplicationLifecycleImpl">
+				<set-object property="stateManager" value="infrastructure:applicationStateManager" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+
+	<service-point id="DiscardSessionFilter" interface="org.apache.tapestry.services.WebRequestServicerFilter">
+
+		Filter used to optionally discard the session at the end of a request (typically after a logout).
+
+		<invoke-factory>
+			<construct class="DiscardSessionFilter">
+				<set-object property="applicationLifecycle" value="service:ApplicationLifecycle" />
+			</construct>
+		</invoke-factory>
+
+	</service-point>
+
+
+</module>

@@ -1,0 +1,13 @@
+<!DOCTYPE application PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<application name="RSS Feed Server Application">
+  
+  <meta key="org.apache.tapestry.page-class-packages" value="com.tapfans.myfeed.tapestry.pages"/>
+  <meta key="org.apache.tapestry.component-class-packages" value="com.tapfans.myfeed.tapestry.components"/>
+  <meta key="org.apache.tapestry.visit-class" value="com.tapfans.myfeed.tapestry.Visit"/>
+  <meta key="org.apache.tapestry.global-class" value="com.tapfans.myfeed.tapestry.Global"/>  
+        
+  <library id="contrib" specification-path="/org/apache/tapestry/contrib/Contrib.library"/>
+    
+</application>
