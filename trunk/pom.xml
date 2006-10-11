@@ -3,10 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.tapfans.myfeed</groupId>
   <artifactId>myfeed</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>Maven Quick Start Archetype</name>
-  <url>http://maven.apache.org</url>
+  <url>http://tapfans.org</url>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,5 +14,43 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.12</version>
+		</dependency>    
+		<dependency>
+			<groupId>tapestry</groupId>
+			<artifactId>tapestry</artifactId>
+			<version>4.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>tapestry</groupId>
+			<artifactId>tapestry-contrib</artifactId>
+			<version>4.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>tapestry</groupId>
+			<artifactId>tapestry-annotations</artifactId>
+			<version>4.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>tapestry</groupId>
+			<artifactId>tapestry-portlet</artifactId>
+			<version>4.0</version>
+		</dependency>    
   </dependencies>
+	<build>
+		<finalName>${artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<target>1.5</target>
+					<source>1.5</source>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>  
 </project>
